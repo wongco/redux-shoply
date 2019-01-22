@@ -1,8 +1,14 @@
-import { DOTHIS } from './actionTypes';
+import { ADD, REMOVE } from './actionTypes';
 
-export function dothis(param) {
+export function add(id) {
   return {
-    type: DOTHIS,
-    payload: param
+    type: ADD,
+    payload: { id }
+  };
+}
+export function remove(id) {
+  return {
+    type: REMOVE,
+    payload: { id }
   };
 }

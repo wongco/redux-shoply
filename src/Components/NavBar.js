@@ -22,20 +22,26 @@ const StyledCartInfo = styled.div`
   background-color: green;
 `;
 
-const NavBar = () => {
-  const total = 0;
-  const totalItems = 5;
-  return (
-    <StyledNav>
-      <StyledHome>SHOPPPPPLY-Future Link</StyledHome>
-      <StyledCartInfo>
-        <div>Shopping Cart Total: {total}</div>
-        <div>Total Items: {totalItems}</div>
-        <div>Future Link to Actual Cart</div>
-      </StyledCartInfo>
-    </StyledNav>
-  );
-};
+class NavBar extends Component {
+  render() {
+    const { cart } = this.props;
+    const values = Object.values(cart);
+    const total = values
+      .reduce((acc, next) => acc + next.price * next.count, 0)
+      .toFixed(2);
+    const totalItems = values.reduce((acc, next) => acc + next.count, 0);
+    return (
+      <StyledNav>
+        <StyledHome>SHOPPPPPLY-Future Link</StyledHome>
+        <StyledCartInfo>
+          <div>Shopping Cart Total: {total}</div>
+          <div>Total Items: {totalItems}</div>
+          <div>Future Link to Actual Cart</div>
+        </StyledCartInfo>
+      </StyledNav>
+    );
+  }
+}
 
 NavBar.propTypes = {};
 

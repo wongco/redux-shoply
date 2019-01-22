@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 //import './Inventory.css';
 import styled from 'styled-components';
-import Item from './Item';
+import ItemContainer from '../Containers/ItemContainer';
 
-const Inventory = () => {
-  return (
-    <div className="Inventory">
-      <ul>
-        {this.props.items.map(item => (
-          <Item item={item} />
-        ))}
-      </ul>
-    </div>
-  );
-};
+class Inventory extends Component {
+  render() {
+    return (
+      <div className="Inventory">
+        <ul>
+          {this.props.items.map(item => (
+            <ItemContainer key={item.id} item={item} />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 
 Inventory.propTypes = {};
 
-Inventory.defaultProps = {};
+Inventory.defaultProps = {
+  items: []
+};
 
 export default Inventory;
