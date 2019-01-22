@@ -18,17 +18,19 @@ function rootReducer(state = INITIAL_STATE, action) {
         const inventoryItem = state.items.find(item => item.id === payloadId);
         item = { ...inventoryItem };
         delete item[payloadId];
+        // refactor to not use delete
         item.count = 1;
       }
       cart[payloadId] = item;
       return { ...state, cart };
     }
+
     case REMOVE: {
       Object.freeze(state.cart);
       const cart = { ...state.cart };
       const payloadId = action.payload.id;
       Object.freeze(state.cart[payloadId]);
-      if (payloadId in cart) {
+      if (cart.hasOwnProperty(payloadId)) {
         const item = { ...cart[payloadId] };
         item.count = item.count ? item.count - 1 : 0;
         cart[payloadId] = item;
