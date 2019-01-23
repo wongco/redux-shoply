@@ -15,11 +15,10 @@ function rootReducer(state = INITIAL_STATE, action) {
         item = { ...cart[payloadId] };
         item.count = item.count + 1;
       } else {
+        // adding an item to the cart with count of 1
         const inventoryItem = state.items.find(item => item.id === payloadId);
-        item = { ...inventoryItem };
-        delete item[payloadId];
-        // refactor to not use delete
-        item.count = 1;
+        const { id, ...inventoryDetails } = inventoryItem;
+        item = { ...inventoryDetails, count: 1 };
       }
       cart[payloadId] = item;
       return { ...state, cart };
