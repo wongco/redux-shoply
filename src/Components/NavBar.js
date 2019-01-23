@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledNav = styled.nav`
@@ -37,11 +38,17 @@ class NavBar extends Component {
     const totalItems = values.reduce((acc, next) => acc + next.count, 0);
     return (
       <StyledNav>
-        <StyledHome>SHOPPPPPLY-Future Link</StyledHome>
+        <StyledHome>
+          <NavLink exact to="/">
+            Shoply Inventory
+          </NavLink>
+        </StyledHome>
         <StyledCartInfo>
           <div>Shopping Cart Total: {totalPrice}</div>
           <div>Total Items: {totalItems}</div>
-          <div>Actual Cart</div>
+          <NavLink exact to="/cart">
+            Cart
+          </NavLink>
         </StyledCartInfo>
       </StyledNav>
     );

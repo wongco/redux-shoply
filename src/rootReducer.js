@@ -1,7 +1,7 @@
 import sampleData from './data.json';
-import { ADD, REMOVE } from './actionTypes';
+import { ADD, REMOVE, APPLY_DISCOUNT } from './actionTypes';
 
-const INITIAL_STATE = { items: sampleData.items, cart: {} };
+const INITIAL_STATE = { items: sampleData.items, cart: {}, discountRate: 0 };
 
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -37,6 +37,24 @@ function rootReducer(state = INITIAL_STATE, action) {
       }
       return { ...state, cart };
     }
+
+    case APPLY_DISCOUNT: {
+      switch (action.payload.discountCode) {
+        case 'REMOVE10': {
+          return { ...state, discountRate: 0.1 };
+        }
+        case 'REMOVE20': {
+          return { ...state, discountRate: 0.2 };
+        }
+        case 'REMOVE30': {
+          return { ...state, discountRate: 0.3 };
+        }
+        default: {
+          return state;
+        }
+      }
+    }
+
     default: {
       return state;
     }

@@ -17,8 +17,6 @@ const StyledItem = styled.div`
   }
 `;
 
-const Title = styled.p``;
-
 const TextContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -34,6 +32,7 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
+  max-height: 100%;
   max-width: 100%;
   height: auto;
 `;
