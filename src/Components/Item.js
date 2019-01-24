@@ -6,11 +6,14 @@ import PropTypes from 'prop-types';
 const StyledItem = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   margin: 50px;
   border-radius: 10px;
   /* box-shadow: 5px 5px 10px darkgray; */
+  /* background-color: blue; */
 
   * {
     box-sizing: border-box;
@@ -24,17 +27,17 @@ const TextContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 100%;
-  height: 20vw;
+  height: 200px;
+  width: 200px;
   display: flex;
   justify-content: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 `;
 
 const StyledImage = styled.img`
-  max-height: 100%;
+  height: 100%;
   max-width: 100%;
-  height: auto;
+  object-fit: contain;
 `;
 
 class Item extends Component {
